@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :validation_codes, only: [:create]
       resource :session, only: [:create, :destroy]
       resource :me, only: [:show]
-      resources :item
+      resources :items
       resources :tags
     end
   end
