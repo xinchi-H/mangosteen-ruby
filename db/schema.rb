@@ -24,26 +24,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_103058) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "itmes", force: :cascade do |t|
-    t.bigint "user_id"
-    t.integer "amount"
-    t.text "notes"
-    t.integer "tags_id", array: true
-    t.datetime "happen_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "validation_codes", force: :cascade do |t|
     t.string "email"
     t.integer "kind", default: 1, null: false
+    t.string "code", limit: 50
     t.datetime "used_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
