@@ -6,5 +6,5 @@ RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.com
 WORKDIR /mangosteen
 ADD mangosteen-*.tar.gz ./
 RUN bundle config set --local without 'development test'
-RUN bundle install
+RUN bundle install --local
 ENTRYPOINT bundle exec puma

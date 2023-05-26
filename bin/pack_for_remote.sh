@@ -1,10 +1,14 @@
 user=mangosteen
 ip=121.196.236.94
 
+# 当前时间
 time=$(date +'%Y%m%d-%H%M%S')
 cache_dir=tmp/deploy_cache
+# 压缩包的文件名
 dist=$cache_dir/mangosteen-$time.tar.gz
+# 当前目录（bin目录）
 current_dir=$(dirname $0)
+# 远程部署目录
 deploy_dir=/home/$user/deploys/$time
 gemfile=$current_dir/../Gemfile
 gemfile_lock=$current_dir/../Gemfile.lock
@@ -21,6 +25,7 @@ function title {
 
 title '打包源代码为压缩文件'
 mkdir $cache_dir
+# 避免install时候出问题，直接把下载的东西缓存起来，放到vendor目录， 
 bundle cache
 tar --exclude="tmp/cache/*" --exclude="tmp/deploy_cache/*" -czv -f $dist *
 title '创建远程目录'
